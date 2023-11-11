@@ -23,7 +23,6 @@ import { NotificationModule } from './notification/notification.module';
 import { PromotionModule } from './promotion/promotion.module';
 import { FineModule } from './fine/fine.module';
 import { CategoryModule } from './category/category.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
 
 
 @Module({
@@ -31,10 +30,6 @@ import { ServeStaticModule } from '@nestjs/serve-static';
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true,
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, 'src', 'swagger'),
-      serveRoot: process.env.NODE_ENV === 'development' ? '/' : '/swagger',
     }),
     MongooseModule.forRoot(process.env.DB_URI, { dbName: "ReduxAndAuth" }),
     MailerModule.forRootAsync({

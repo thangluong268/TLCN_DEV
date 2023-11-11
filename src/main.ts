@@ -17,21 +17,6 @@ async function bootstrap() {
     }
   });
 
-
-   // get the swagger json file (if app is running in development mode)
-   if (process.env.NODE_ENV === 'development') {
-    const pathToSwaggerStaticFolder = resolve(process.cwd(), 'swagger');
-
-    // write swagger json file
-    const pathToSwaggerJson = resolve(
-      pathToSwaggerStaticFolder,
-      'swagger.ts',
-    );
-    const swaggerJson = JSON.stringify(document, null, 2);
-    writeFileSync(pathToSwaggerJson, swaggerJson);
-    console.log(`Swagger JSON file written to: '/swagger/swagger.ts'`);
-  }
-
   app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(process.env.PORT);
