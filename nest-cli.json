@@ -4,8 +4,7 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "assets": ["**/*.njk"],
-
+    "assets": [{ "include": "templates/**/*", "outDir": "dist/src" }],
     "watchAssets": true
   }
 }
