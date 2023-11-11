@@ -3,18 +3,10 @@ import { AppModule } from './app.module';
 import { SwaggerModule } from '@nestjs/swagger';
 import { createDocument } from './swagger/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { resolve } from 'path';
-import { writeFileSync } from 'fs';
-
 declare const module: any;
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
-    cors: {
-      origin: "*",
-      credentials: true,
-    }
-  });
-  //app.enableCors();
+  const app = await NestFactory.create(AppModule);
+  app.enableCors();
   app.setGlobalPrefix('/api');
   SwaggerModule.setup('api', app, createDocument(app), {
     swaggerOptions: {
